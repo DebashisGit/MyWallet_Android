@@ -3,7 +3,7 @@ package com.debashis.mywallet.storage.sqlite;
 import android.provider.BaseColumns;
 
 /**
- * Created by sushil on 23/2/16.
+ * Created by Debashis on 23/2/16.
  */
 public final class DatabaseContract {
 
@@ -51,6 +51,7 @@ public final class DatabaseContract {
         public static final String COLUMN_NAME_EXPENDITURE_AMOUNT = "expenditure_amount";
         public static final String COLUMN_NAME_EXPENDITURE_DATE = "expenditure_date";
         public static final String COLUMN_NAME_EXPENDITURE_TYPE = "expenditure_type";
+        public static final String ALIAS_COLUMN_NAME_SUM_AMOUNT = "sum_amount";
 
         public static final String CREATE_EXPENDITURE_TABLE = "CREATE TABLE "
                 + TABLE_NAME + "( "
@@ -62,22 +63,19 @@ public final class DatabaseContract {
         public static final String DELETE_USER_TABLE = "DROP TABLE IF EXISTS"
                 + TABLE_NAME;
 
-        public static final String TOTAL_EXPENDITURE_AMOUNT_BANK = "Select sum("
-                + COLUMN_NAME_EXPENDITURE_AMOUNT + ") from "
+        public static final String EXPENDITURE_LIST_QUERY = "Select * from "
                 + TABLE_NAME
                 + " Where "
-                + COLUMN_NAME_EXPENDITURE_TYPE + " = 1";
+                + COLUMN_NAME_EXPENDITURE_TYPE + " = ?"
+                + "Order By "
+                + COLUMN_NAME_EXPENDITURE_DATE + " DESC";
 
-        public static final String TOTAL_EXPENDITURE_AMOUNT_CREDIT_CARD = "Select sum("
-                + COLUMN_NAME_EXPENDITURE_AMOUNT + ") from "
+        public static final String EXPENDITURE_SUM_AMOUNT = "Select SUM("
+                + COLUMN_NAME_EXPENDITURE_AMOUNT
+                + ") " + ALIAS_COLUMN_NAME_SUM_AMOUNT
+                + " from "
                 + TABLE_NAME
                 + " Where "
-                + COLUMN_NAME_EXPENDITURE_TYPE + " = 2";
-
-        public static final String TOTAL_EXPENDITURE_AMOUNT_CASH = "Select sum("
-                + COLUMN_NAME_EXPENDITURE_AMOUNT + ") from "
-                + TABLE_NAME
-                + " Where "
-                + COLUMN_NAME_EXPENDITURE_TYPE + " = 3";
+                + COLUMN_NAME_EXPENDITURE_TYPE + " = ?";
     }
 }

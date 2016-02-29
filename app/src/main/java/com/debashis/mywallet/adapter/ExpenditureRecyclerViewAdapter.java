@@ -12,7 +12,7 @@ import com.debashis.mywallet.model.Expenditure;
 import java.util.List;
 
 /**
- * Created by sushil on 25/2/16.
+ * Created by Debashis on 25/2/16.
  */
 public class ExpenditureRecyclerViewAdapter extends RecyclerView.Adapter<ExpenditureRecyclerViewAdapter.ViewHolder> {
 
@@ -34,9 +34,15 @@ public class ExpenditureRecyclerViewAdapter extends RecyclerView.Adapter<Expendi
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Expenditure expenditure = expenditureList.get(position);
+
+        StringBuilder builder = new StringBuilder();
+        builder.append("Rs ");
+        builder.append(expenditure.getExpenditureAmount());
+        String amount = builder.toString();
+
         holder.nameText.setText(expenditure.getExpenditureName());
         holder.dateText.setText(expenditure.getExpenditureDate());
-        holder.amountText.setText(expenditure.getExpenditureAmount());
+        holder.amountText.setText(amount);
     }
 
     @Override

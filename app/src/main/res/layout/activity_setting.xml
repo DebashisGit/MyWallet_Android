@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/setting_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:id="@+id/setting_lyt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:id="@+id/crossImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/delete_32"
+                android:clickable="true"
+                android:onClick="CloseSettingActivity"
+                android:layout_alignParentRight="true"/>
+
+            <TextView
+                android:id="@+id/setting_help"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_below="@+id/crossImage"
+                android:text="@string/setting_help"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/bank_amt_lyt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/setting_help">
+                <EditText
+                    android:id="@+id/bank_amt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Bank amount"
+                    android:inputType="number"
+                    android:digits="0,1,2,3,4,5,6,7,8,9"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/credit_card_amt_lyt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/bank_amt_lyt">
+                <EditText
+                    android:id="@+id/credit_card_amt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Credit card amount"
+                    android:inputType="number"
+                    android:digits="0,1,2,3,4,5,6,7,8,9"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/cash_amt_lyt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/credit_card_amt_lyt">
+                <EditText
+                    android:id="@+id/cash_amt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Cash amount"
+                    android:inputType="number"
+                    android:digits="0,1,2,3,4,5,6,7,8,9"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/save_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cash_amt_lyt"
+                android:layout_centerHorizontal="true"
+                android:text="SAVE"/>
+
+            <Button
+                android:id="@+id/reset_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/save_button"
+                android:layout_centerHorizontal="true"
+                android:text="RESET"/>
+
+            <TextView
+                android:id="@+id/reset_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_below="@+id/reset_button"
+                android:text="@string/reset_text"
+                android:maxLines="3"
+                android:textStyle="italic"/>
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

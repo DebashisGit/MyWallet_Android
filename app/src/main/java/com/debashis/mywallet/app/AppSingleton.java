@@ -7,7 +7,7 @@ import com.debashis.mywallet.storage.sqlite.DatabaseHelper;
 import com.debashis.mywallet.storage.sqlite.DatabaseManager;
 
 /**
- * Created by sushil on 23/2/16.
+ * Created by Debashis on 23/2/16.
  */
 public class AppSingleton {
 

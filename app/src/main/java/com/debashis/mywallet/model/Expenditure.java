@@ -1,7 +1,7 @@
 package com.debashis.mywallet.model;
 
 /**
- * Created by sushil on 25/2/16.
+ * Created by Debashis on 25/2/16.
  */
 public class Expenditure {
     private String expenditureName;

@@ -4,7 +4,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 /**
- * Created by sushil on 23/2/16.
+ * Created by Debashis on 23/2/16.
  */
 public class DatabaseManager {
     private static DatabaseManager mDatabaseManager;

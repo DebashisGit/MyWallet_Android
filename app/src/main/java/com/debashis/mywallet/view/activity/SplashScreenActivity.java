@@ -51,7 +51,8 @@ public class SplashScreenActivity extends Activity {
     }
 
     private void launchMainActivity() {
-
+        Intent intent = new Intent(this, ExpenditureActivity_.class);
+        startActivity(intent);
     }
 
     private void showProgressBar(boolean show){

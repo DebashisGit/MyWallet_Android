@@ -4,10 +4,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.text.TextUtils;
 
 import com.debashis.mywallet.model.User;
+import com.debashis.mywallet.storage.keychain.MyWalletKeyChain;
 import com.debashis.mywallet.storage.sqlite.DatabaseManager;
 
 /**
- * Created by sushil on 23/2/16.
+ * Created by Debashis on 23/2/16.
  */
 public class SignUpPresenter {
 

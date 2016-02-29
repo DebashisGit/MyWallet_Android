@@ -1,16 +1,21 @@
 package com.debashis.mywallet.view.activity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.debashis.mywallet.Constant;
+import com.debashis.mywallet.storage.keychain.MyWalletKeyChain;
 import com.debashis.mywallet.storage.sqlite.DatabaseHelper;
 import com.debashis.mywallet.presenter.SignUpPresenter;
 import com.debashis.mywallet.presenter.SignUpView;
 import com.debashis.mywallet.R;
+import com.debashis.mywallet.storage.sqlite.DatabaseManager;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -121,6 +126,10 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
             Toast.makeText(this, R.string.toast_signup_failed, Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(this, R.string.toast_signup_success, Toast.LENGTH_SHORT).show();
+            MyWalletKeyChain.saveHasLoggedIn(this, true);
+            Intent intent = new Intent(this, ExpenditureActivity_.class);
+            startActivity(intent);
+            finish();
         }
     }
 }

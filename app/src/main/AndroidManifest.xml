@@ -23,11 +23,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".view.activity.LoginActivity_" />
+        <activity android:name=".view.activity.SignUpActivity_" />
         <activity
-            android:name=".view.activity.LoginActivity_">
-        </activity>
-        <activity android:name=".view.activity.SignUpActivity_"></activity>
-
+            android:name=".view.activity.ExpenditureActivity_"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".view.activity.SettingActivity_"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".view.activity.ExpenditureEntryActivity_"
+            android:theme="@style/Theme.Expenditure.Dialog"></activity>
     </application>
 
 </manifest>

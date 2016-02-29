@@ -1,7 +1,7 @@
 package com.debashis.mywallet.model;
 
 /**
- * Created by sushil on 23/2/16.
+ * Created by Debashis on 23/2/16.
  */
 public class User {
     private String firstName;

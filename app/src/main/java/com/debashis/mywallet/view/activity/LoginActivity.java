@@ -11,6 +11,7 @@ import com.debashis.mywallet.model.User;
 import com.debashis.mywallet.presenter.LoginPresenter;
 import com.debashis.mywallet.presenter.LoginView;
 import com.debashis.mywallet.R;
+import com.debashis.mywallet.storage.keychain.MyWalletKeyChain;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -84,6 +85,10 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     public void loginResponse(List<User> user) {
         if(user != null && user.size() > 0){
             Toast.makeText(this, R.string.toast_login_success, Toast.LENGTH_SHORT).show();
+            MyWalletKeyChain.saveHasLoggedIn(this, true);
+            Intent intent = new Intent(this, ExpenditureActivity_.class);
+            startActivity(intent);
+            finish();
         }
         else
             Toast.makeText(this, R.string.toast_login_failed, Toast.LENGTH_SHORT).show();
