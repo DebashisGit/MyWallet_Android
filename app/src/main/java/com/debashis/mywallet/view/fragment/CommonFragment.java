@@ -11,6 +11,9 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -24,6 +27,7 @@ import com.debashis.mywallet.presenter.ExpenditureViewPresenter;
 import com.debashis.mywallet.storage.keychain.MyWalletKeyChain;
 import com.debashis.mywallet.view.activity.ExpenditureActivity_;
 import com.debashis.mywallet.view.activity.ExpenditureEntryActivity_;
+import com.debashis.mywallet.view.activity.SettingActivity_;
 
 import java.util.List;
 
@@ -57,6 +61,7 @@ public class CommonFragment extends Fragment implements ExpenditureView {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
         expenditureViewPresenter = new ExpenditureViewPresenter(this);
     }
 
@@ -130,9 +135,47 @@ public class CommonFragment extends Fragment implements ExpenditureView {
 
                 setBalance();
             }
-            if(isUpdated)
+            if(isUpdated) {
+                updateInitialAmount();
                 setBalance();
+            }
         }
+    }
+
+    private void updateInitialAmount() {
+        mInitialBankAmount = MyWalletKeyChain.getBankAmount(getActivity());
+        mInitialCardAmount = MyWalletKeyChain.getCreditCardAmount(getActivity());
+        mInitialCashAmount = MyWalletKeyChain.getCashAmount(getActivity());
+
+        if(expenditureType == 1)
+            mInitialAmount = mInitialBankAmount;
+        else if(expenditureType == 2)
+            mInitialAmount = mInitialCardAmount;
+        else if(expenditureType == 3)
+            mInitialAmount = mInitialCashAmount;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.main, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+        if(id == R.id.setting_menu){
+            Intent intent = new Intent(getActivity(), SettingActivity_.class);
+            startActivityForResult(intent, Constant.REQUEST_CODE);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     class OnFloatingActionButtonClickListener implements View.OnClickListener {
